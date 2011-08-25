@@ -1,4 +1,4 @@
-class AssetsController < ApplicationController
+class Admin::AssetsController < Admin::AdminController
   respond_to :html, :json
   before_filter :site_required!
   before_filter :asset_type_required!, :only => [:new, :create, :update]

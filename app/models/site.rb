@@ -11,4 +11,8 @@ class Site < ActiveRecord::Base
   has_many :templates
   has_many :javascripts
   liquid_methods :name, :slug, :title, :tagline
+
+  def to_s
+    name
+  end
 end

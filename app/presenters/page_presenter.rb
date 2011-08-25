@@ -13,9 +13,9 @@ class PagePresenter
       'content_for_layout' => page_template.render(
         'site' => @site,
         'page' => @page,
-        'theme' => @theme,
+        'theme' => @theme
       ),
-      'theme' => @theme,
+      'theme' => @theme
     )
   end
 

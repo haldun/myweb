@@ -1,4 +1,4 @@
-class PagesController < ApplicationController
+class Admin::PagesController < Admin::AdminController
   respond_to :html, :json
   before_filter :site_required!
 
@@ -10,11 +10,12 @@ class PagesController < ApplicationController
   end
 
   def show
-    respond_with do |format|
-      format.html do
-        render :text => PagePresenter.new(page).render
-      end
-    end
+    respond_with page
+    # respond_with do |format|
+    #   format.html do
+    #     render :text => PagePresenter.new(page).render
+    #   end
+    # end
   end
 
   def new

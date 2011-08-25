@@ -1,4 +1,4 @@
-class ThemesController < ApplicationController
+class Admin::ThemesController < Admin::AdminController
   respond_to :html, :json
   before_filter :site_required!
 
