@@ -9,5 +9,8 @@
 
   <div class="actions">
     <%= f.button :submit %>
+    <% unless asset.new_record? %>
+      <button id="save">Save</button>
+    <% end %>
   </div>
 <% end %>
