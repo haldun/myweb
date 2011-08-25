@@ -1,6 +1,5 @@
 class Site < ActiveRecord::Base
-  extend FriendlyId
-  friendly_id :name, :use => :slugged
+  # TODO Add name validation for subdomains
   validates_presence_of :name
   validates_uniqueness_of :name
   belongs_to :owner, :class_name => "User"
@@ -12,7 +11,7 @@ class Site < ActiveRecord::Base
   has_many :images
   has_many :templates
   has_many :javascripts
-  liquid_methods :name, :slug, :title, :tagline
+  liquid_methods :name, :title, :tagline
 
   def to_s
     name

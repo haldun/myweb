@@ -9,12 +9,18 @@ class ApplicationController < ActionController::Base
   end
 
   def current_site
-    @current_site ||= Site.find_by_slug(request.subdomain) if request.subdomain.present?
+    @current_site ||= Site.find_by_name(request.subdomain) if request.subdomain.present?
+  end
+
+  def authenticate_user!
+    if current_user.nil?
+      redirect_to login_url, :alert => "You must first log in to access this page"
+    end
   end
 
   def site_required!
     if current_site.nil?
-      redirect_to sites_url
+      redirect_to sign_up_url(:subdomain => 'www')
     end
   end
 end

@@ -11,11 +11,6 @@ class Admin::PagesController < Admin::AdminController
 
   def show
     respond_with page
-    # respond_with do |format|
-    #   format.html do
-    #     render :text => PagePresenter.new(page).render
-    #   end
-    # end
   end
 
   def new

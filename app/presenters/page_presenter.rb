@@ -18,17 +18,4 @@ class PagePresenter
       'theme' => @theme
     )
   end
-
-  # TODO This module is nonsense here
-  module PageFilters
-    include ActionView::Helpers::TagHelper
-
-    def stylesheet_tag input
-      tag :link,
-          :rel => :stylesheet,
-          :href =>"/assets/#{@context['theme'].directory_name}/stylesheets/#{input}.css"
-    end
-  end
-
-  Liquid::Template.register_filter(PageFilters)
 end
