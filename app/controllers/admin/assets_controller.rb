@@ -50,16 +50,16 @@ class Admin::AssetsController < Admin::AdminController
 
   def create
     flash.notice = 'Asset was created successfully.' if asset.save
-    respond_with asset
+    respond_with [:admin, asset]
   end
 
   def update
     flash.notice = 'Asset was updated successfully.' if asset.save
-    respond_with asset
+    respond_with [:admin, asset]
   end
 
   def destroy
     asset.destroy
-    respond_with theme_assets_path(theme, :type => nil)
+    redirect_to admin_theme_assets_path(theme)
   end
 end

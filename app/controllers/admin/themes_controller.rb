@@ -23,21 +23,21 @@ class Admin::ThemesController < Admin::AdminController
 
   def create
     flash.notice = 'Theme was created successfully.' if theme.save
-    respond_with theme
+    respond_with [:admin, theme]
   end
 
   def update
     flash.notice = 'Theme was updated successfully.' if theme.save
-    respond_with theme
+    respond_with [:admin, theme]
   end
 
   def destroy
     theme.destroy
-    respond_with theme
+    respond_with [:admin, theme]
   end
 
   def publish
     theme.publish!
-    respond_with theme
+    respond_with [:admin, theme]
   end
 end
