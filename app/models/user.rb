@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :display_name
+  attr_accessible :email, :password, :password_confirmation, :display_name, :owned_sites_attributes
+  has_secure_password
+  has_many :owned_sites, :class_name => "Site", :foreign_key => "owner_id"
+  accepts_nested_attributes_for :owned_sites
+  validates_uniqueness_of :email
+  validates_presence_of :email
+  validates_presence_of :password, :on => :create
 
   def to_s
     display_name || email

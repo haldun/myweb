@@ -1,0 +1,19 @@
+<h1>Sign up</h1>
+<%= simple_form_for user do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.simple_fields_for :owned_sites do |s| %>
+      <%= s.input :title, :label => "Name your site" %>
+      <%= s.input :name, :label => "Your site address" %> .myweb.dev
+    <% end %>
+
+    <%= f.input :email %>
+    <%= f.input :password, :as => :password %>
+    <%= f.input :password_confirmation, :as => :password %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,6 +1,8 @@
 class Site < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, :use => :slugged
+  validates_presence_of :name
+  validates_uniqueness_of :name
   belongs_to :owner, :class_name => "User"
   belongs_to :current_theme, :class_name => "Theme", :foreign_key => "current_theme_id"
   has_many :pages, :dependent => :destroy

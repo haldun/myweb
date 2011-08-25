@@ -16,7 +16,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'devise'
 gem 'simple_form'
 gem 'decent_exposure'
 gem 'cancan'
