@@ -1,0 +1,31 @@
+<h1>Listing sites</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Slug</th>
+    <th>Title</th>
+    <th>Tagline</th>
+    <th>Owner</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% sites.each do |site| %>
+  <tr>
+    <td><%= site.name %></td>
+    <td><%= site.slug %></td>
+    <td><%= site.title %></td>
+    <td><%= site.tagline %></td>
+    <td><%= site.owner %></td>
+    <td><%= link_to 'Show', site %></td>
+    <td><%= link_to 'Edit', edit_site_path(site) %></td>
+    <td><%= link_to 'Destroy', site, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Site', new_site_path %>

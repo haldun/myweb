@@ -1,0 +1,10 @@
+<%= show_for site do |s| %>
+  <%= s.attribute :name %>
+  <%= s.attribute :slug %>
+  <%= s.attribute :title %>
+  <%= s.attribute :tagline %>
+  <%= s.association :owner %>
+<% end %>
+
+<%= link_to 'Edit', edit_site_path(site) %> |
+<%= link_to 'Back', sites_path %>

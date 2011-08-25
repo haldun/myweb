@@ -1,0 +1,9 @@
+<%= show_for asset do |s| %>
+  <%= s.attribute :name %>
+  <%= s.attribute :type %>
+  <%= s.attribute :content %>
+  <%= s.attribute :path %>
+<% end %>
+
+<%= link_to 'Edit', edit_asset_path(asset) %> |
+<%= link_to 'Back', theme_assets_path(theme) %>
