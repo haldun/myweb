@@ -23,16 +23,16 @@ class Admin::PagesController < Admin::AdminController
 
   def create
     flash.notice = 'Page was created successfully.' if page.save
-    respond_with page
+    respond_with [:admin, page]
   end
 
   def update
     flash.notice = 'Page was updated successfully.' if page.save
-    respond_with page
+    respond_with [:admin, page]
   end
 
   def destroy
     page.destroy
-    respond_with page
+    respond_with [:admin, page]
   end
 end
