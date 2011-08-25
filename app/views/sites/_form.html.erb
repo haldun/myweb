@@ -3,10 +3,10 @@
 
   <div class="inputs">
     <%= f.input :name %>
-    <%= f.input :slug %>
     <%= f.input :title %>
     <%= f.input :tagline %>
     <%= f.association :owner %>
+    <%= f.association :current_theme, :collection => site.themes %>
   </div>
 
   <div class="actions">

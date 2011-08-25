@@ -29,4 +29,5 @@
 <%= link_to 'New Template', new_theme_template_path(theme) %> |
 <%= link_to 'New Stylesheet', new_theme_stylesheet_path(theme) %> |
 <%= link_to 'New Javascript', new_theme_javascript_path(theme) %> |
-<%= link_to 'New Image', new_theme_image_path(theme) %>
+<%= link_to 'New Image', new_theme_image_path(theme) %> |
+<%= link_to 'Publish theme', publish_theme_path(theme), :method => :post %>

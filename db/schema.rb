@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110825093505) do
+ActiveRecord::Schema.define(:version => 20110825133020) do
 
   create_table "assets", :force => true do |t|
     t.integer  "site_id"
@@ -43,18 +43,8 @@ ActiveRecord::Schema.define(:version => 20110825093505) do
   add_index "pages", ["site_id"], :name => "index_pages_on_site_id"
   add_index "pages", ["slug"], :name => "index_pages_on_slug"
 
-  create_table "sites", :force => true do |t|
-    t.string   "name"
-    t.string   "slug"
-    t.string   "title"
-    t.text     "tagline"
-    t.integer  "owner_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "sites", ["owner_id"], :name => "index_sites_on_owner_id"
-  add_index "sites", ["slug"], :name => "index_sites_on_slug"
+# Could not dump table "sites" because of following StandardError
+#   Unknown type 'belongs_to' for column 'current_theme_id'
 
   create_table "themes", :force => true do |t|
     t.integer  "site_id"

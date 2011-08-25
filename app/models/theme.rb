@@ -8,6 +8,10 @@ class Theme < ActiveRecord::Base
   has_many :images
   has_many :javascripts
 
+  def template name
+    templates.find_by_name("#{name}.liquid")
+  end
+
   def publish!
     make_directories
     assets.each(&:publish!)
@@ -35,4 +39,5 @@ class Theme < ActiveRecord::Base
   end
 
   memoize :directory_name, :directory_path
+  liquid_methods :name, :directory_name
 end

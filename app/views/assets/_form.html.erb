@@ -1,10 +1,10 @@
-<%= simple_form_for [theme, asset] do |f| %>
+<%= simple_form_for asset.new_record? ? [theme, asset] : asset do |f| %>
   <%= f.error_notification %>
 
   <div class="inputs">
     <%= f.input :name %>
-    <%= f.input :content %>
-    <%= f.input :path %>
+    <%= f.input :content, :as => :hidden, :input_html => {:class => "content"} %>
+    <div id="editor"><%= asset.content %></div>
   </div>
 
   <div class="actions">
