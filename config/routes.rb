@@ -3,10 +3,8 @@ Myweb::Application.routes.draw do
   get 'log_in' => 'sessions#new', :as => 'log_in'
   get 'sign_up' => 'users#new', :as => 'sign_up'
 
-  root :to => 'users#new'
   resources :users
   resources :sessions
-
   resources :sites
 
   namespace :admin do
@@ -14,7 +12,7 @@ Myweb::Application.routes.draw do
       resources :pages
       resources :themes do
         member do
-          post 'publish'
+          get 'publish'
         end
 
         resources :assets, :shallow => true
@@ -26,5 +24,5 @@ Myweb::Application.routes.draw do
     end
   end
 
-  root :to => 'sites#index'
+  root :to => 'home#index'
 end
