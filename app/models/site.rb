@@ -1,7 +1,6 @@
 class Site < ActiveRecord::Base
   # TODO Add name validation for subdomains
-  validates_presence_of :name
-  validates_uniqueness_of :name
+  validate :name, :presence => true, :uniqueness => true
   belongs_to :owner, :class_name => "User"
   belongs_to :current_theme, :class_name => "Theme", :foreign_key => "current_theme_id"
   has_many :pages, :dependent => :destroy
@@ -11,9 +10,6 @@ class Site < ActiveRecord::Base
   has_many :images
   has_many :templates
   has_many :javascripts
-  after_save { Rails.cache.write "sites/#{name}", self }
-  after_destroy { Rails.cache.delete "sites/#{name}" }
-
   liquid_methods :name, :title, :tagline
 
   def to_s
@@ -24,9 +20,5 @@ class Site < ActiveRecord::Base
     Rails.cache.fetch("sites/#{name}") do
       find_by_name name
     end
-  end
-
-  def after_save
-    logger.info "Site after save"
   end
 end
