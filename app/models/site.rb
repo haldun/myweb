@@ -11,9 +11,22 @@ class Site < ActiveRecord::Base
   has_many :images
   has_many :templates
   has_many :javascripts
+  after_save { Rails.cache.write "sites/#{name}", self }
+  after_destroy { Rails.cache.delete "sites/#{name}" }
+
   liquid_methods :name, :title, :tagline
 
   def to_s
     name
+  end
+
+  def self.fetch_by_name name
+    Rails.cache.fetch("sites/#{name}") do
+      find_by_name name
+    end
+  end
+
+  def after_save
+    logger.info "Site after save"
   end
 end

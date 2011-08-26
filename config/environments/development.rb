@@ -24,4 +24,6 @@ Myweb::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
+
+  config.cache_store = :dalli_store
 end

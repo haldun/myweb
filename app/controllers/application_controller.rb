@@ -9,7 +9,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_site
-    @current_site ||= Site.find_by_name(request.subdomain) if request.subdomain.present?
+    @current_site ||= begin
+      if request.subdomain.present?
+        Site.fetch_by_name(request.subdomain)
+      end
+    end
   end
 
   def authenticate_user!
