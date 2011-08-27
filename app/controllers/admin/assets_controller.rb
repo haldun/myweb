@@ -4,13 +4,20 @@ class Admin::AssetsController < Admin::AdminController
   before_filter :asset_type_required!, :only => [:new, :create, :update]
 
   expose(:themes) { current_site.themes }
-  expose(:theme) { params[:theme_id].present? ? themes.find(params[:theme_id]) : asset.theme }
-  expose(:assets) do
-    method_name = asset_type.present? ?
-                  asset_type.pluralize.to_sym :
-                  :assets
-    params[:theme_id].present? ? theme.send(method_name) : current_site.send(method_name)
+
+  expose(:theme) do
+    params[:theme_id].present? ? themes.find(params[:theme_id]) : asset.theme
   end
+
+  expose(:assets) do
+    method_name = asset_type.present? ? asset_type.pluralize.to_sym : :assets
+    if params[:theme_id].present?
+      theme.send(method_name)
+    else
+      current_site.send(method_name)
+    end
+  end
+
   expose(:asset) do
     if id = params[:id]
       assets.find(id).tap do |r|

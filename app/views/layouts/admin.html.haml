@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %title Myweb Administrator
+    = stylesheet_link_tag "admin/application"
+    = csrf_meta_tags
+  %body{:class => controller_name}
+    %header
+      %h1
+        = current_site
+        administrator
+      %nav
+        %ul
+          %li= link_to "Pages", admin_pages_path
+          %li= link_to "Themes", admin_themes_path
+        %br
+    #content= yield
+    = javascript_include_tag "admin/application"

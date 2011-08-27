@@ -1,0 +1,21 @@
+%h1 Listing themes
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Directory
+    %th Published at
+    %th
+    %th
+    %th
+  - themes.each do |theme|
+    %tr
+      %td= theme.name
+      %td= theme.description
+      %td= theme.directory
+      %td= theme.published_at
+      %td= link_to 'Show', [:admin, theme]
+      %td= link_to 'Edit', edit_admin_theme_path(theme)
+      %td= link_to 'Destroy', [:admin, theme], confirm: 'Are you sure?', method: :delete
+%br
+= link_to 'New Theme', new_admin_theme_path

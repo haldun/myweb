@@ -30,6 +30,7 @@ gem 'show_for'
 gem 'liquid'
 gem 'kaminari'
 gem 'dalli'
+gem 'haml'
 
 # Use unicorn as the web server
 gem 'unicorn'
